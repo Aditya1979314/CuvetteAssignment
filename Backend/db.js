@@ -30,6 +30,12 @@ const UserSchema = new Schema({
   otpPhone: { type: String },
   otpEmailExpires: { type: Date }, 
   otpPhoneExpires: { type: Date }, 
+  jobs: [
+    {
+      type:Schema.Types.ObjectId,
+      ref:'Job'
+    }
+  ]
 });
 
 
@@ -44,7 +50,6 @@ const JobSchema = new Schema({
       },
       experienceLevel: {
         type: String,
-        enum: ['Entry', 'Mid', 'Senior'],
         required: true
       },
       candidate: {
@@ -52,14 +57,8 @@ const JobSchema = new Schema({
         required: true
       },
       date: {
-        type: Date,
-        default: Date.now 
-      },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User', 
-    required: true
-  }
+        type: Date
+      }
 });
 
 
