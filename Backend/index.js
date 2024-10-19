@@ -7,10 +7,12 @@ import sendOTPSMS from './helper/Phone.js';
 import generateOTP from './helper/otp.js';
 import jwt from 'jsonwebtoken';
 import { userauth } from './middleware/auth.js';
+import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Database connected'))
